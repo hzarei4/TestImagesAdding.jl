@@ -1,6 +1,5 @@
 using IndexFunArrays:rr, xx, yy, zz, phiphi
 using FourierTools: shift
-using PSFDistiller: gaussf
 
 export Pollen3D
 
@@ -41,9 +40,10 @@ function Pollen3D(sv = (128, 128, 128), dphi::Float64=0.0, dtheta::Float64=0.0)
 
     
     a = abs.(cos.(theta .* 20))
+    # b=abs.(sin.(phi.*(cos.(theta).*10.0 .+1.0)))
     b = abs.(sin.(phi .* sqrt.(20^2 .* cos.(theta)) .- theta .+ pi/2)) 
-
-    c = ((0.4*sv[1] .+ (a .* b).^5 * sv[1]/20.0) .+ cos.(phi) * sv[1]/20) 
+    # b=abs.(cos.(phi.*9));
+    c = ((0.4*sv[1] .+ (a .* b).^5 * sv[1]/20.0) .+ cos.(phi) .* sv[1]/20) 
 
     ret = rr(sv) .<= c
     ret = Array{Float64}(ret)
@@ -52,7 +52,7 @@ function Pollen3D(sv = (128, 128, 128), dphi::Float64=0.0, dtheta::Float64=0.0)
     
     ret = abs.(shift(ret, (-round(Int, sv[1]/20), 0 ,0)))
     ret[ret .< 0.5] .= 0
-    ret = gaussf(ret, 0.5)  
+    # ret = gaussf(ret, 0.5)  
 
     return ret
 end

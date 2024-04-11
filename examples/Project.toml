@@ -1,2 +1,8 @@
 [deps]
+BenchmarkTools = "6e4b80f9-dd63-53aa-95a3-0cdb28fa8baf"
+FourierTools = "b18b359b-aebc-45ac-a139-9c0ccbb2871e"
+GLMakie = "e9467ef8-e4e7-5192-8a1a-b1aee30e663a"
+IJulia = "7073ff75-c697-5162-941a-fcdaad2a7d2a"
+IndexFunArrays = "613c443e-d742-454e-bfc6-1d7f8dd76566"
 TestImagesAdding = "a2912350-5aa0-4f8f-8fb8-34b2c1c1c71e"
+View5D = "90d841e0-6953-4e90-9f3a-43681da8e949"
